@@ -1,0 +1,20 @@
+# Vendor Policy
+
+## Purpose
+To define vendor validation requirements.
+
+## Vendor Requirements
+- Every vendor should have a unique vendor ID.
+- Vendor name must match the registered vendor record.
+- GSTIN should match the vendor master record where applicable.
+- Payment terms should match the registered agreement.
+- Vendor bank details must be verified through an authorized process.
+
+## Validation Rules
+- Unknown vendor: Send to Vendor Management.
+- Vendor name mismatch: Flag for manual review.
+- GSTIN mismatch: Flag for review.
+- Inactive vendor: Do not automatically approve invoices.
+
+## Routing
+Vendor-related issues should be sent to the Vendor Management Department.

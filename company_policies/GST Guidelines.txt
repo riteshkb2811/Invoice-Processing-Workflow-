@@ -1,0 +1,25 @@
+# GST Invoice Guidelines
+
+## Purpose
+To define basic GST-related invoice validation requirements for the sample invoice processing system.
+
+## Required Information
+- Supplier name and address
+- Supplier GSTIN, where applicable
+- Invoice number
+- Invoice date
+- Recipient details
+- GST rate and tax amount, where applicable
+- Total invoice amount
+
+## Validation Rules
+- GSTIN should follow the expected format.
+- GST amounts should be consistent with the taxable amount and applicable tax rates.
+- CGST and SGST may apply to intra-state transactions.
+- IGST may apply to inter-state transactions.
+- Missing GST information should trigger manual review when required.
+
+## Exception Handling
+Invoices with invalid GSTIN, missing tax details or inconsistent calculations must be flagged for review.
+
+Note: Actual GST applicability and rates must be verified against official regulations.

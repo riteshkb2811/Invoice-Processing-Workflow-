@@ -1,0 +1,24 @@
+# Payment Terms Policy
+
+## Purpose
+To define payment deadlines for company invoices.
+
+## Standard Payment Terms
+- Standard vendors: Net 30 days.
+- Premium vendors: Net 15 days.
+- Government vendors: Net 45 days.
+
+## Payment Rules
+- Payment deadlines should be calculated using the applicable invoice date or contractual terms.
+- Vendor-specific agreements take precedence over standard payment terms.
+- Early payment discounts must be verified.
+- Overdue invoices should be flagged for Finance review.
+
+## Required Information
+- Invoice date
+- Vendor payment terms
+- Payment due date
+- Invoice amount
+
+## Exception Handling
+Invoices with missing payment terms should be sent to the Finance Department.

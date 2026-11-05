@@ -1,0 +1,37 @@
+# Invoice Exception Handling Policy
+
+## Purpose
+To define how invoices with errors or missing information should be handled.
+
+## Exception Types
+
+### Missing Information
+Invoices missing invoice number, vendor name, invoice date or amount must be sent for manual review.
+
+### Duplicate Invoice
+Invoices with an existing invoice number and vendor combination should be flagged as potential duplicates.
+
+### Invalid Vendor
+Invoices from unregistered or inactive vendors should be routed to Vendor Management.
+
+### Missing Purchase Order
+Invoices requiring a PO but missing one should be sent to Procurement.
+
+### Amount Mismatch
+Invoices with inconsistent totals or PO amounts should be flagged for Finance review.
+
+### Invalid GST Information
+Invoices with missing or inconsistent GST details should be sent for manual review.
+
+## Exception Processing
+- Do not automatically approve invoices with unresolved exceptions.
+- Record the exception reason.
+- Assign the appropriate department.
+- Update invoice status after review.
+
+## Possible Statuses
+- Pending Review
+- Rejected
+- Approved
+- Pending Procurement
+- Pending Finance Review

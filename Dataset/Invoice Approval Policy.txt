@@ -1,0 +1,21 @@
+# Invoice Approval Policy
+
+## Purpose
+To establish approval rules for invoices submitted to the company.
+
+## Approval Rules
+
+- Invoices below ₹10,000: Automatic approval after successful validation.
+- Invoices between ₹10,000 and ₹50,000: Department Manager approval required.
+- Invoices between ₹50,001 and ₹2,00,000: Finance Manager approval required.
+- Invoices above ₹2,00,000: Finance Head approval required.
+
+## Additional Rules
+- Invoices with missing mandatory information must be sent for manual review.
+- Invoices with suspicious or inconsistent information must not be automatically approved.
+- Approval decisions must be recorded in the system.
+
+## Routing
+- Department Manager → Department expenses
+- Finance Manager → Medium and high-value invoices
+- Finance Head → High-value invoices

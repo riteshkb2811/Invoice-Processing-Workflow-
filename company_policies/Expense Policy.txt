@@ -1,0 +1,28 @@
+# Expense Policy
+
+## Purpose
+To define company expense approval requirements.
+
+## Eligible Expenses
+- Office supplies
+- Software subscriptions
+- Business travel
+- Equipment purchases
+- Professional services
+
+## Expense Requirements
+- Every expense must have a valid business purpose.
+- Supporting invoices or receipts must be provided.
+- Expenses should be associated with the appropriate department.
+- Expenses must comply with company spending limits.
+
+## Restricted Expenses
+- Personal purchases
+- Unauthorized subscriptions
+- Unapproved purchases
+- Expenses without supporting documentation
+
+## Routing
+- Department-related expenses → Department Manager
+- Financial exceptions → Finance Manager
+- Restricted or suspicious expenses → Manual Review

@@ -1,0 +1,19 @@
+# Purchase Order Policy
+
+## Purpose
+To ensure invoices are consistent with approved purchase orders.
+
+## Requirements
+- Purchase invoices should contain a valid PO number when required.
+- The vendor should match the vendor mentioned in the PO.
+- Invoice amounts should be checked against PO amounts.
+- Purchase quantities should match the approved purchase order.
+
+## Validation Rules
+- Missing PO number: Send to Procurement Department.
+- Invalid PO number: Send for manual review.
+- Invoice amount exceeding PO amount: Flag for review.
+- Vendor mismatch: Reject automatic processing.
+
+## Routing
+Invoices requiring PO verification should be routed to the Procurement Department.

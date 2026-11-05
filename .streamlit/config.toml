@@ -1,0 +1,15 @@
+[theme]
+base = "dark"
+primaryColor = "#54C6A5"
+backgroundColor = "#101714"
+secondaryBackgroundColor = "#1B2520"
+textColor = "#E7F0EB"
+font = "DM Sans:https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+baseRadius = "small"
+buttonRadius = "small"
+showWidgetBorder = true
+borderColor = "#34443B"
+codeBackgroundColor = "#1B2520"
+linkColor = "#76D7B7"
+paddingTop = "2rem"
+paddingBottom = "2rem"
