@@ -16,3 +16,5 @@ rapidocr-onnxruntime
 langchain-groq
 streamlit
 pymysql
+google-auth-oauthlib
+google-api-python-client

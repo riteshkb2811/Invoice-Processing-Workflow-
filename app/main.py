@@ -25,6 +25,22 @@ def render_app() -> None:
         st.caption("Text extraction · LangChain PDFMiner + local OCR fallback")
         st.caption("Policy search · Ollama embeddings + Chroma")
         st.divider()
+        st.subheader("Email alerts")
+        recipient = os.getenv("MANUAL_REVIEW_EMAIL", "reviewer@company.com")
+        st.caption(f"Recipient: {recipient}")
+        from pathlib import Path
+        token_path = Path(__file__).resolve().parents[1] / "token.json"
+        secret_path = Path(__file__).resolve().parents[1] / "client_secret.json"
+        if token_path.exists():
+            st.badge("Gmail API connected", color="green")
+        elif secret_path.exists():
+            st.badge("Gmail auth required", color="orange")
+            st.caption("To link Gmail, run in terminal:\n`python -m app.services.email_service --auth`")
+        elif os.getenv("SMTP_USER"):
+            st.badge("SMTP active", color="green")
+        else:
+            st.badge("Simulation mode", color="gray")
+        st.divider()
         st.caption("PDF text extraction is local. Extracted invoice text is sent to Groq for classification and field extraction.")
 
     st.title("Invoice review desk")
@@ -194,6 +210,9 @@ def render_app() -> None:
                         except Exception as error:
                             st.error(f"Could not save invoice: {error}")
 
+                if review.email_notification_status:
+                    st.caption(f"📧 {review.email_notification_status}")
+
                 details_tab, policy_tab, text_tab = st.tabs(
                     ["Details", "Policy review", "Extracted text"]
                 )
@@ -210,14 +229,30 @@ def render_app() -> None:
                     else:
                         st.success("No validation errors were found.")
                 with policy_tab:
-                    st.write(approval.reason)
+                    st.write(f"**Approval Decision:** {approval.reason}")
                     st.write(
-                        f"Approval authority: {approval.approval_authority or 'Not specified'}"
+                        f"**Approval authority:** {approval.approval_authority or 'Not specified'}"
                     )
                     st.caption(
                         "Policy sources: "
                         + (", ".join(item["policy_names"]) or "none")
                     )
+                    if review.policy_audit:
+                        st.divider()
+                        st.subheader("Policy compliance audit")
+                        if review.policy_audit.compliant:
+                            st.success("Invoice complies with matched company policies.")
+                        else:
+                            st.error("Policy compliance violations detected:")
+                            for violation in review.policy_audit.violations:
+                                st.markdown(
+                                    f"- **[{violation.policy_name}]** ({violation.severity}): {violation.issue}"
+                                )
+                                st.caption(f"  {violation.explanation}")
+                        if review.policy_audit.recommendations:
+                            st.markdown("**Recommendations:**")
+                            for rec in review.policy_audit.recommendations:
+                                st.write(f"- {rec}")
                 with text_tab:
                     st.caption(
                         f"{item['page_count']} pages · {item['ocr_pages']} pages required OCR"

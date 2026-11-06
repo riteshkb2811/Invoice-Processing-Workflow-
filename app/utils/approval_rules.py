@@ -1,17 +1,35 @@
 from decimal import Decimal
 
-from app.database.models import ApprovalDecision, InvoiceExtraction, InvoiceValidation
+from app.database.models import (
+    ApprovalDecision,
+    InvoiceExtraction,
+    InvoiceValidation,
+    PolicyAudit,
+)
 
 
 def determine_approval(
     extraction: InvoiceExtraction,
     validation: InvoiceValidation,
+    policy_audit: PolicyAudit | None = None,
 ) -> ApprovalDecision:
     if not validation.is_valid or extraction.total_amount is None:
         return ApprovalDecision(
             approval_authority=None,
             status="Manual Review",
             reason="Required invoice details are missing or inconsistent.",
+        )
+
+    if policy_audit and not policy_audit.compliant:
+        issues = (
+            "; ".join(v.issue for v in policy_audit.violations[:2])
+            if policy_audit.violations
+            else "Policy non-compliance detected."
+        )
+        return ApprovalDecision(
+            approval_authority=None,
+            status="Manual Review",
+            reason=f"Policy compliance flag: {issues}",
         )
 
     amount = extraction.total_amount

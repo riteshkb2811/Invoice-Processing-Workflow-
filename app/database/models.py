@@ -5,6 +5,19 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
+class PolicyViolation(BaseModel):
+    policy_name: str
+    issue: str
+    explanation: str
+    severity: str = "Medium"
+
+
+class PolicyAudit(BaseModel):
+    compliant: bool
+    violations: list[PolicyViolation] = Field(default_factory=list)
+    recommendations: list[str] = Field(default_factory=list)
+
+
 class InvoiceClassification(BaseModel):
     invoice_type: Literal["Purchase", "Service", "Utility", "Other"]
     confidence: float = Field(ge=0, le=1)
@@ -47,3 +60,5 @@ class InvoiceProcessingResult(BaseModel):
     extraction: InvoiceExtraction
     validation: InvoiceValidation
     approval: ApprovalDecision
+    policy_audit: PolicyAudit | None = None
+    email_notification_status: str | None = None

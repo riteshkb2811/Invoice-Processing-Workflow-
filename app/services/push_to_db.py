@@ -58,6 +58,8 @@ def get_push_confirmation_reasons(result: InvoiceProcessingResult) -> list[str]:
     ]
     if result.validation.errors:
         reasons.append("invoice has validation errors")
+    if result.policy_audit and not result.policy_audit.compliant:
+        reasons.append("invoice has policy compliance violations")
     return reasons
 
 
@@ -66,8 +68,16 @@ def _record_key(result: InvoiceProcessingResult, source_filename: str) -> str:
     identity = {
         "invoice_number": extraction.invoice_number,
         "vendor_name": extraction.vendor_name,
-        "invoice_date": extraction.invoice_date.isoformat() if extraction.invoice_date else None,
-        "total_amount": str(extraction.total_amount) if extraction.total_amount is not None else None,
+        "invoice_date": (
+            extraction.invoice_date.isoformat()
+            if extraction.invoice_date
+            else None
+        ),
+        "total_amount": (
+            str(extraction.total_amount)
+            if extraction.total_amount is not None
+            else None
+        ),
         "source_filename": source_filename,
     }
     return hashlib.sha256(

@@ -14,7 +14,10 @@ def get_ocr_engine() -> RapidOCR:
 
 def extract_pdf_text(pdf_bytes: bytes) -> tuple[str, int, int]:
     blob = Blob.from_data(pdf_bytes, mime_type="application/pdf")
-    extracted_pages = list(PDFMinerParser(mode="page").lazy_parse(blob))
+    try:
+        extracted_pages = list(PDFMinerParser(mode="page").lazy_parse(blob))
+    except Exception:
+        extracted_pages = []
     page_texts = []
     ocr_pages = 0
     ocr = None
