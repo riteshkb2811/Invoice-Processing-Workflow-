@@ -1,4 +1,4 @@
-# AutoMobile_RAG: Intelligent Invoice Review & Policy Audit System
+# InvoIQ: Intelligent Invoice Review & Policy Audit System
 
 [![Python](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B.svg)](https://streamlit.io/)
