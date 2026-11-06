@@ -203,8 +203,8 @@ Before setting up the project, ensure your environment meets the following:
 ### 1. Clone the Repository
 
 ```powershell
-git clone <repository_url>
-cd AutoMobile_RAG
+git clone https://github.com/riteshkb2811/Invoice-Processing-Workflow-.git
+cd Invoice-Processing-Workflow-
 ```
 
 ### 2. Set Up a Virtual Environment
